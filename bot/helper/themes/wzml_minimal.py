@@ -175,8 +175,7 @@ class WZMLStyle:
     ####--------OVERALL MSG HEADER----------
     STATUS_NAME =       '<b><i>{Name}</i></b>'
 
-    #####---------PROGRESSIVE STATUS-------
-    FOOTER =         '<b><i>┎━━━━ « Tᴀᴍɪʟ×Lᴇᴇᴄʜ » ━━━━༻</i></b>' 
+    #####---------PROGRESSIVE STATUS------- 
     BAR =               '\n┃ {Bar}'
     PROCESSED =         '\n┠ <b>⚡ᴘʀᴏᴄᴇssᴇᴅ:</b> {Processed}'
     STATUS =            '\n┠ <b>🪄sᴛᴀᴛᴜs:</b> <a href="{Url}">{Status}</a>'
