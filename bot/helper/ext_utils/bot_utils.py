@@ -44,17 +44,18 @@ PAGE_NO      = 1
 
 
 class MirrorStatus:
-    STATUS_UPLOADING   = "Upload"
-    STATUS_DOWNLOADING = "Download"
-    STATUS_CLONING     = "Clone"
-    STATUS_QUEUEDL     = "QueueDL"
-    STATUS_QUEUEUP     = "QueueUp"
-    STATUS_PAUSED      = "Pause"
-    STATUS_ARCHIVING   = "Archive"
-    STATUS_EXTRACTING  = "Extract"
-    STATUS_SPLITTING   = "Split"
-    STATUS_CHECKING    = "CheckUp"
-    STATUS_SEEDING     = "Seed"
+    STATUS_UPLOADING   = "Uᴘʟᴏᴀᴅɪɴɢ"
+    STATUS_DOWNLOADING = "Dᴏᴡɴʟᴏᴀᴅɪɴɢ"
+    STATUS_CLONING     = "Cʟᴏɴᴇ"
+    STATUS_QUEUEDL     = "QᴜᴇᴜᴇDL"
+    STATUS_QUEUEUP     = "QᴜᴇᴜᴇUᴘ"
+    STATUS_PAUSED      = "Pᴀᴜsᴇ"
+    STATUS_ARCHIVING   = "Aʀᴄʜɪᴠᴇ"
+    STATUS_EXTRACTING  = "Exᴛʀᴀᴄᴛ"
+    STATUS_SPLITTING   = "Sᴘʟɪᴛ"
+    STATUS_METADATA    = "Mᴇᴛᴀᴅᴀᴛᴀ"
+    STATUS_CHECKING    = "CʜᴇᴄᴋUᴘ"
+    STATUS_SEEDING     = "Sᴇᴇᴅq"
 
 
 class setInterval:
@@ -143,7 +144,7 @@ def get_progress_bar_string(pct):
     cPart = int(p % 8 - 1)
     p_str = '■' * cFull
     if cPart >= 0:
-        p_str += ['▤', '▥', '▦', '▧', '▨', '▩', '■'][cPart]
+        p_str += ['◌', '○', '○', '◎', '◉', '◕', '●'][cPart]
     p_str += '□' * (12 - cFull)
     return f"[{p_str}]"
 
@@ -214,7 +215,7 @@ def get_readable_message():
             ChatType.SUPERGROUP, ChatType.CHANNEL] and not config_dict['DELETE_LINKS'] else ''
         elapsed = time() - download.message.date.timestamp()
         msg += BotTheme('STATUS_NAME', Name="Task is being Processed!" if config_dict['SAFE_MODE'] and elapsed >= config_dict['STATUS_UPDATE_INTERVAL'] else escape(f'{download.name()}'))
-        if download.status() not in [MirrorStatus.STATUS_SPLITTING, MirrorStatus.STATUS_SEEDING]:
+        if download.status() not in [MirrorStatus.STATUS_SPLITTING, MirrorStatus.STATUS_SEEDING, MirrorStatus.STATUS_METADATA]:
             msg += BotTheme('BAR', Bar=f"{get_progress_bar_string(download.progress())} {download.progress()}")
             msg += BotTheme('PROCESSED', Processed=f"{download.processed_bytes()} of {download.size()}")
             msg += BotTheme('STATUS', Status=download.status(), Url=msg_link)
