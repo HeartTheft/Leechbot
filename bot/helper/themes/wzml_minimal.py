@@ -176,23 +176,24 @@ class WZMLStyle:
     STATUS_NAME =       '<b><i>{Name}</i></b>'
 
     #####---------PROGRESSIVE STATUS-------
+    FOOTER =            '\n┎━━━━ « Tᴀᴍɪʟ×Lᴇᴇᴄʜ » ━━━━༻
     BAR =               '\n┃ {Bar}'
-    PROCESSED =         '\n┠🔄<b>Pʀᴏᴄᴇssᴇᴅ:</b> {Processed}'
-    STATUS =            '\n┠🚦<b>Sᴛᴀᴛᴜs:</b> <a href="{Url}">{Status}</a>'
-    ETA =                                                ' |  <b>⏰ETA:</b> {Eta}'
-    SPEED =             '\n┠🚀<b>Sᴘᴇᴇᴅ:</b> {Speed}'
-    ELAPSED =                                     ' | <b>Elapsed:</b> {Elapsed}'
-    ENGINE =            '\n┠⚙️<b>Eɴɢɪɴᴇ:</b> {Engine}'
-    STA_MODE =          '\n┠💠<b>Mᴏᴅᴇ:</b> {Mode}'
-    SEEDERS =           '\n┠❇️<b>Sᴇᴇᴅᴇʀs:</b> {Seeders} | ' 
-    LEECHERS =                                         '<b>🔻Leechers:</b> {Leechers}'
+    PROCESSED =         '\n┠⚡<b>ᴘʀᴏᴄᴇssᴇᴅ:</b> {Processed}'
+    STATUS =            '\n┠🪄<b>sᴛᴀᴛᴜs:</b> <a href="{Url}">{Status}</a>'
+    ETA =               '\n┠⏳<b>ETA:</b> {Eta}'
+    SPEED =             '\n┠🚀<b>sᴘᴇᴇᴅ:</b> {Speed}'
+    ELAPSED =           '\n┠🕓<b>ᴇʟᴀᴘsᴇᴅ:</b> {Elapsed}'
+    ENGINE =            '\n┠🪩<b>ᴇɴɢɪɴᴇ:</b> {Engine ki}'
+    STA_MODE =          '\n┠🌐<b>ᴍᴏᴅᴇ:</b> {Mode}'
+    SEEDERS =           '\n┠🌱<b>sᴇᴇᴅᴇʀs:</b> {Seeders}' 
+    LEECHERS =          '\n┠☘️<b>ʟᴇᴇᴄʜᴇʀs:</b> {Leechers}'
 
     ####--------SEEDING----------
     SEED_SIZE =      '\n┠ <b>Sɪᴢᴇ: </b>{Size}'
-    SEED_SPEED =     '\n┠ <b>Sᴘᴇᴇᴅ: </b> {Speed} | '
-    UPLOADED =                                     '<b>Uᴘʟᴏᴀᴅᴇᴅ: </b> {Upload}'
-    RATIO =          '\n┠ <b>Rᴀᴛɪᴏ: </b> {Ratio} | '
-    TIME =                                         '<b>Tɪᴍᴇ: </b> {Time}'
+    SEED_SPEED =     '\n┠ <b>sᴘᴇᴇᴅ: </b> {Speed}'
+    UPLOADED =       '\n┠ <b>Uᴘʟᴏᴀᴅᴇᴅ: </b> {Upload}'
+    RATIO =          '\n┠ <b>Rᴀᴛɪᴏ: </b> {Ratio}'
+    TIME =           '\n┠ <b>Tɪᴍᴇ: </b> {Time}'
     SEED_ENGINE =    '\n┠ <b>Eɴɢɪɴᴇ:</b> {Engine}'
 
     ####--------NON-PROGRESSIVE + NON SEEDING----------
@@ -200,21 +201,21 @@ class WZMLStyle:
     NON_ENGINE =     '\n┠ <b>Eɴɢɪɴᴇ:</b> {Engine}'
 
     ####--------OVERALL MSG FOOTER----------
-    USER =              '\n┠ <b>Usᴇʀ:</b> <code>{User}</code> | '
-    ID =                                                        '<b>Iᴅ:</b> <code>{Id}</code>'
-    BTSEL =          '\n┠ <b>Sᴇʟᴇᴄᴛ:</b> {Btsel}'
+    USER =           '\n┠🪪<b>ᴜsᴇʀ:</b> <code>{User}</code>'
+    ID =             '\n┠🆔<b>ɪᴅ:</b> <code>{Id}</code>'
+    BTSEL =          '\n┠ 💫<b>sᴇʟᴇᴄᴛ:</b> {Btsel}'
     CANCEL =         '\n┖ {Cancel}\n\n'
 
     ####------FOOTER--------
-    FOOTER = '⌬ <b><i>Bᴏᴛ Sᴛᴀᴛs</i></b>\n'
+    FOOTER = '⌬ <b><i>ʙᴏᴛ sᴛᴀᴛs</i></b>\n'
     TASKS =  '┠ <b>Tᴀsᴋs:</b> {Tasks}\n'
     BOT_TASKS = '┠ <b>Tᴀsᴋs:</b> {Tasks}/{Ttask} | <b>Aᴠʟ:</b> {Free}\n'
-    Cpu = '┠ <b>Cᴘᴜ:</b> {cpu}% | '
+    Cpu = '┠ <b>ᴄᴘᴜ:</b> {cpu}% | '
     FREE =                      '<b>F:</b> {free} [{free_p}%]'
-    Ram = '\n┠ <b>Rᴀᴍ:</b> {ram}% | '
-    uptime =                     '<b>UᴘTɪᴍᴇ:</b> {uptime}'
-    DL = '\n┖ <b>Dʟ:</b> {DL}/s | '
-    UL =                        '<b>Uʟ:</b> {UL}/s'
+    Ram = '\n┠ <b>ʀᴀᴍ:</b> {ram}% | '
+    uptime =                     '<b>ᴜᴘᴛɪᴍᴇ:</b> {uptime}'
+    DL = '\n┖ <b>ᴅʟ:</b> {DL}/s | '
+    UL =                        '<b>ᴜʟ:</b> {UL}/s'
 
     ###--------BUTTONS-------
     PREVIOUS = '⫷'
