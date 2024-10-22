@@ -6,7 +6,7 @@ from asyncio import create_subprocess_exec, gather, run as asyrun
 from uuid import uuid4
 from base64 import b64decode
 from importlib import import_module, reload
-
+import asyncio
 from requests import get as rget
 from pytz import timezone
 from bs4 import BeautifulSoup
@@ -19,9 +19,9 @@ from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 from pyrogram.filters import command, private, regex
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-from bot import bot, user, bot_name, config_dict, user_data, botStartTime, LOGGER, Interval, DATABASE_URL, QbInterval, INCOMPLETE_TASK_NOTIFIER, scheduler
+from bot import bot, user, bot_name, config_dict, user_data, botStartTime, LOGGER, Interval, DATABASE_URL, QbInterval, INCOMPLETE_TASK_NOTIFIER, scheduler, bot_cache
 from bot.version import get_version
-from .helper.ext_utils.fs_utils import start_cleanup, clean_all, exit_clean_up
+from .helper.nordbotz_utils.metadata import start_cleanup, clean_all, exit_clean_up
 from .helper.ext_utils.bot_utils import get_readable_time, cmd_exec, sync_to_async, new_task, set_commands, update_user_ldata, get_stats
 from .helper.ext_utils.db_handler import DbManger
 from .helper.telegram_helper.bot_commands import BotCommands
@@ -30,6 +30,7 @@ from .helper.telegram_helper.filters import CustomFilters
 from .helper.telegram_helper.button_build import ButtonMaker
 from .helper.listeners.aria2_listener import start_aria2_listener
 from .helper.themes import BotTheme
+from bot.helper.nordbotz_utils.react_nordbotz import send_react
 from .modules import authorize, clone, gd_count, gd_delete, gd_list, cancel_mirror, mirror_leech, status, torrent_search, torrent_select, ytdlp, \
                      rss, shell, eval, users_settings, bot_settings, speedtest, save_msg, images, imdb, anilist, mediainfo, mydramalist, gen_pyro_sess, \
                      gd_clean, broadcast, category_select
@@ -40,6 +41,10 @@ async def stats(client, message):
 
 @new_task
 async def start(client, message):
+    await send_react(message)
+    sticker_message = await message.reply_sticker("CAACAgIAAxkBAAEtHc9mujrAsWOqxgdgeW1buCMzJRI6MQACeBEAAvOz2Up9EgJ1A6-HOjUE")
+    await asyncio.sleep(1)
+    await sticker_message.delete()
     buttons = ButtonMaker()
     buttons.ubutton(BotTheme('ST_BN1_NAME'), BotTheme('ST_BN1_URL'))
     buttons.ubutton(BotTheme('ST_BN2_NAME'), BotTheme('ST_BN2_URL'))
@@ -101,7 +106,11 @@ async def login(_, message):
         await sendMessage(message, BotTheme('LOGIN_USED'))
 
 
+
 async def restart(client, message):
+    sticker_message = await message.reply_sticker("CAACAgIAAxkBAAEtHdFmujsPGntfFSppfQe4rD6mo_s8fQACChAAAk5MmErrhQcs-hPVJTUE")
+    await asyncio.sleep(1)
+    await sticker_message.delete()
     restart_message = await sendMessage(message, BotTheme('RESTARTING'))
     if scheduler.running:
         scheduler.shutdown(wait=False)
@@ -110,7 +119,7 @@ async def restart(client, message):
         if interval:
             interval[0].cancel()
     await sync_to_async(clean_all)
-    proc1 = await create_subprocess_exec('pkill', '-9', '-f', 'gunicorn|aria2c|qbittorrent-nox|ffmpeg|rclone')
+    proc1 = await create_subprocess_exec('pkill', '-9', '-f', f'gunicorn|{bot_cache["pkgs"][-1]}')
     proc2 = await create_subprocess_exec('python3', 'update.py')
     await gather(proc1.wait(), proc2.wait())
     async with aiopen(".restartmsg", "w") as f:
@@ -261,7 +270,7 @@ async def main():
         BotCommands.HelpCommand) & CustomFilters.authorized & ~CustomFilters.blacklisted))
     bot.add_handler(MessageHandler(stats, filters=command(
         BotCommands.StatsCommand) & CustomFilters.authorized & ~CustomFilters.blacklisted))
-    LOGGER.info(f"WZML-X Bot [@{bot_name}] Started!")
+    LOGGER.info(f"WZML-X Advance Bot[@{bot_name}] Started!")
     if user:
         LOGGER.info(f"WZ's User [@{user.me.username}] Ready!")
     signal(SIGINT, exit_clean_up)
