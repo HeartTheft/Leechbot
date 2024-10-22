@@ -6,10 +6,12 @@ apscheduler
 aria2p
 asyncio
 beautifulsoup4
+bencoding
 cinemagoer
 cloudscraper
 cryptography
 dnspython
+electrogram
 feedparser
 flask
 gevent
@@ -29,10 +31,12 @@ pillow
 psutil
 pybase64
 pycountry
-pymongo
-pyrofork==2.2.11
 python-dotenv
+pyshorteners
 python-magic
+pymongo
+Pyrofork==2.2.11
+quoters
 qbittorrent-api
 requests
 speedtest-cli
@@ -42,4 +46,4 @@ tgcrypto
 uv
 uvloop
 xattr
-yt-dlp
+yt-dlp==2023.10.7
